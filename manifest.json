@@ -5,15 +5,15 @@
   "display": "standalone",
   "background_color": "#0a1c3d",
   "theme_color": "#1a2a6c",
-  "description": "¡Create, save and share your decks with the WW community.!",
+  "description": "¡Create, save and share your decks with the WW community!",
   "icons": [
     {
-      "src": "/images/icono-192x192.png",
+      "src": "https://raw.githubusercontent.com/akapelu/WonderDecks/main/images/icono-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/images/icono-512x512.png",
+      "src": "https://raw.githubusercontent.com/akapelu/WonderDecks/main/images/icono-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
