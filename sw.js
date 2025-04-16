@@ -1,13 +1,13 @@
 const CACHE_NAME = 'wonder-decks-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/images/icono-192x192.png',
-  '/images/icono-512x512.png',
-  '/images/favicon.ico',
-  '/images/logo.png'
+  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/',
+  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/index.html',
+  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/styles.css',
+  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/script.js',
+  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/images/icono-192x192.png',
+  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/images/icono-512x512.png',
+  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/favicon.ico',
+  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/logo.png'
 ];
 
 // Instalación del Service Worker
