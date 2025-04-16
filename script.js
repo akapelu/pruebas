@@ -920,6 +920,64 @@ const troopAbilitiesTranslations = {
     }
 };
 
+// Check if the device is mobile
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Check if the app is running in standalone mode
+function isRunningStandalone() {
+  return (window.matchMedia('(display-mode: standalone)').matches || 
+          ('standalone' in navigator && navigator.standalone));
+}
+
+// Show installation prompt for mobile users
+function showInstallPrompt() {
+  // Create the modal dynamically
+  const modal = document.createElement('div');
+  modal.id = 'install-modal';
+  modal.className = 'modal';
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h2>Install Wonder Decks</h2>
+      <p>To enjoy the full Wonder Decks experience, add it to your home screen:</p>
+      <div class="install-instructions">
+        <div class="instruction">
+          <i class="fas fa-mobile-alt"></i>
+          <p><strong>Android:</strong> Tap the menu (⋮) in Chrome and select "Add to Home screen".</p>
+        </div>
+        <div class="instruction">
+          <i class="fab fa-apple"></i>
+          <p><strong>iOS:</strong> Tap the share button (⬆) in Safari and select "Add to Home Screen".</p>
+        </div>
+      </div>
+      <p class="note">Open Wonder Decks from your home screen to continue.</p>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.style.display = 'flex';
+}
+
+// Run check on page load
+document.addEventListener('DOMContentLoaded', () => {
+  if (isMobileDevice() && !isRunningStandalone()) {
+    showInstallPrompt();
+    // Hide main content and prevent interaction
+    document.body.style.overflow = 'hidden';
+    const mainContent = document.querySelectorAll('nav, section');
+    mainContent.forEach(element => {
+      element.style.display = 'none';
+    });
+  } else {
+    // Show content for standalone or desktop
+    document.body.style.overflow = 'auto';
+    const mainContent = document.querySelectorAll('nav, section');
+    mainContent.forEach(element => {
+      element.style.display = '';
+    });
+  }
+});
+
 let currentUser = null;
 let users = [];
 let userLikes = {};
