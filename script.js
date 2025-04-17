@@ -928,10 +928,11 @@ function isMobileDevice() {
 // Check if the app is running in standalone mode
 function isRunningStandalone() {
   return (window.matchMedia('(display-mode: standalone)').matches || 
-          ('standalone' in navigator && navigator.standalone));
+          ('standalone' in navigator && navigator.standalone === true) || 
+          (window.navigator.standalone === true));
 }
 
-// Show installation prompt for mobile users
+// Show installation recommendation for mobile users
 function showInstallPrompt() {
   // Create the modal dynamically
   const modal = document.createElement('div');
@@ -939,8 +940,8 @@ function showInstallPrompt() {
   modal.className = 'modal';
   modal.innerHTML = `
     <div class="modal-content">
-      <h2>Install Wonder Decks</h2>
-      <p>To enjoy the full Wonder Decks experience, add it to your home screen:</p>
+      <h2>Enhance Your Experience</h2>
+      <p>We recommend adding Wonder Decks to your home screen for a better experience:</p>
       <div class="install-instructions">
         <div class="instruction">
           <i class="fas fa-mobile-alt"></i>
@@ -951,11 +952,16 @@ function showInstallPrompt() {
           <p><strong>iOS:</strong> Tap the share button (⬆) in Safari and select "Add to Home Screen".</p>
         </div>
       </div>
-      <p class="note">Open Wonder Decks from your home screen to continue.</p>
+      <button id="close-install-modal" class="modal-button">Continue Without Installing</button>
     </div>
   `;
   document.body.appendChild(modal);
   modal.style.display = 'flex';
+
+  // Add event listener to close the modal
+  document.getElementById('close-install-modal').addEventListener('click', () => {
+    modal.remove();
+  });
 }
 
 // Run check on page load
@@ -965,11 +971,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (isMobileDevice() && !isRunningStandalone()) {
     showInstallPrompt();
-    // Hide navigation and prevent interaction
-    document.querySelector('nav').style.display = 'none';
-    document.body.style.overflow = 'hidden';
   } else {
-    // Show navigation for standalone or desktop
+    // Ensure navigation is visible for standalone or desktop
     document.querySelector('nav').style.display = 'flex';
     document.body.style.overflow = 'auto';
   }
