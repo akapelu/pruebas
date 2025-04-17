@@ -960,21 +960,18 @@ function showInstallPrompt() {
 
 // Run check on page load
 document.addEventListener('DOMContentLoaded', () => {
+  // Always show welcome section on load
+  showSection(welcomeSection);
+
   if (isMobileDevice() && !isRunningStandalone()) {
     showInstallPrompt();
-    // Hide main content and prevent interaction
+    // Hide navigation and prevent interaction
+    document.querySelector('nav').style.display = 'none';
     document.body.style.overflow = 'hidden';
-    const mainContent = document.querySelectorAll('nav, section');
-    mainContent.forEach(element => {
-      element.style.display = 'none';
-    });
   } else {
-    // Show content for standalone or desktop
+    // Show navigation for standalone or desktop
+    document.querySelector('nav').style.display = 'flex';
     document.body.style.overflow = 'auto';
-    const mainContent = document.querySelectorAll('nav, section');
-    mainContent.forEach(element => {
-      element.style.display = '';
-    });
   }
 });
 
