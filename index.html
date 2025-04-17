@@ -44,32 +44,36 @@
     </div>
 </nav>
 
-    <section id="welcome-section">
-        <h2>Welcome to Wonder Decks!</h2>
-        <p>Create, save and share your decks with the community.</p>
-        <button id="get-started-btn">Get Started</button>
-        <button id="explore-heroes-btn">Public Decks</button>
-    </section>
+    <!-- Sección de bienvenida (visible por defecto) -->
+<section id="welcome-section">
+    <h2>Welcome to Wonder Decks!</h2>
+    <p>Create, save and share your decks with the community.</p>
+    <button id="get-started-btn">Get Started</button>
+    <button id="explore-heroes-btn">Public Decks</button>
+</section>
 
-    <section id="hero-showcase-section" style="display: none;">
-        <h2>Public Decks</h2>
-        <div id="hero-list" class="card-list"></div>
-    </section>
+<!-- Sección de mazos públicos (oculta por defecto) -->
+<section id="hero-showcase-section" style="display: none;">
+    <h2>Public Decks</h2>
+    <div id="hero-list" class="card-list"></div>
+</section>
 
-    <section id="hero-decks-section" style="display: none;">
+<!-- Sección de mazos de héroe (oculta por defecto) -->
+<section id="hero-decks-section" style="display: none;">
     <h2 id="hero-decks-title"></h2>
     <div id="hero-info" class="hero-info"></div>
     <div id="hero-decks-list" class="card-list"></div>
 </section>
 
-    <section id="user-account-section" style="display: none;">
-        <h2 id="user-account-title"></h2>
-        <div id="user-decks-list" class="card-list"></div>
-        <div class="account-buttons">
-            <button id="add-deck-btn">Add Deck</button>
-            <button id="delete-account-btn">Delete Account</button>
-        </div>
-    </section>
+<!-- Sección de cuenta de usuario (oculta por defecto) -->
+<section id="user-account-section" style="display: none;">
+    <h2 id="user-account-title"></h2>
+    <div id="user-decks-list" class="card-list"></div>
+    <div class="account-buttons">
+        <button id="add-deck-btn">Add Deck</button>
+        <button id="delete-account-btn">Delete Account</button>
+    </div>
+</section>
 
     <div id="auth-modal" class="modal" style="display: none;">
         <div class="modal-content">
