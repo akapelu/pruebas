@@ -996,7 +996,7 @@ let users = [];
 let userLikes = {};
 
 // GitHub repository base URL for images
-const githubBaseUrl = "https://raw.githubusercontent.com/akapelu/WonderDecks/main/";
+const githubBaseUrl = "https://raw.githubusercontent.com/akapelu/pruebas/main/";
 
 // Function to get the image URL for a hero or troop
 function getImageUrl(name, type) {
