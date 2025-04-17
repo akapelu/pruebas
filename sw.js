@@ -1,25 +1,45 @@
-const CACHE_NAME = 'wonder-decks-v1';
+// Service Worker for Wonder Decks
+const CACHE_NAME = 'wonder-decks-cache-v1';
 const urlsToCache = [
-  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/',
-  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/index.html',
-  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/styles.css',
-  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/script.js',
-  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/images/icono-192x192.png',
-  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/images/icono-512x512.png',
-  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/favicon.ico',
-  'https://raw.githubusercontent.com/akapelu/WonderDecks/main/logo.png'
+  '/',
+  '/index.html',
+  '/styles.css',
+  '/script.js',
+  '/manifest.json',
+  '/images/icono-192x192.png',
+  '/images/icono-512x512.png'
 ];
 
-// Instalación del Service Worker
+// Install event: cache the essential files
 self.addEventListener('install', event => {
+  console.log('Service Worker: Installing...');
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
+      console.log('Service Worker: Caching files');
       return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Interceptar solicitudes y servir desde caché
+// Activate event: clean up old caches
+self.addEventListener('activate', event => {
+  console.log('Service Worker: Activating...');
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            console.log('Service Worker: Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+  return self.clients.claim();
+});
+
+// Fetch event: serve cached files if available
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(response => {
