@@ -927,14 +927,16 @@ function isMobileDevice() {
 
 // Check if the app is running in standalone mode
 function isRunningStandalone() {
-  return (window.matchMedia('(display-mode: standalone)').matches || 
-          ('standalone' in navigator && navigator.standalone === true) || 
-          (window.navigator.standalone === true) ||
-          (window.location.search.includes('standalone=true')));
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                       ('standalone' in navigator && navigator.standalone === true) || 
+                       (window.navigator.standalone === true);
+  console.log("Is running in standalone mode:", isStandalone);
+  return isStandalone;
 }
 
 // Show installation recommendation for mobile users
 function showInstallPrompt() {
+  console.log("Showing install prompt...");
   // Create the modal dynamically
   const modal = document.createElement('div');
   modal.id = 'install-modal';
@@ -964,16 +966,23 @@ function showInstallPrompt() {
     modal.remove();
     // Store a flag in localStorage to prevent the modal from showing again
     localStorage.setItem('installPromptDismissed', 'true');
+    console.log("Install prompt dismissed, flag set in localStorage");
   });
 }
 
 // Run check on page load
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOMContentLoaded event fired");
   // Always show welcome section on load
   showSection(welcomeSection);
 
   // Check if the modal was previously dismissed
   const isModalDismissed = localStorage.getItem('installPromptDismissed') === 'true';
+  console.log("Is modal dismissed (from localStorage):", isModalDismissed);
+
+  // Log device and standalone status
+  console.log("Is mobile device:", isMobileDevice());
+  console.log("Is running standalone:", isRunningStandalone());
 
   if (isMobileDevice() && !isRunningStandalone() && !isModalDismissed) {
     showInstallPrompt();
@@ -981,6 +990,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ensure navigation is visible for standalone or desktop
     document.querySelector('nav').style.display = 'flex';
     document.body.style.overflow = 'auto';
+    console.log("Modal not shown due to: ", {
+      isMobile: isMobileDevice(),
+      isStandalone: isRunningStandalone(),
+      isModalDismissed: isModalDismissed
+    });
   }
 });
 
