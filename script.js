@@ -929,7 +929,8 @@ function isMobileDevice() {
 function isRunningStandalone() {
   return (window.matchMedia('(display-mode: standalone)').matches || 
           ('standalone' in navigator && navigator.standalone === true) || 
-          (window.navigator.standalone === true));
+          (window.navigator.standalone === true) ||
+          (window.location.search.includes('standalone=true')));
 }
 
 // Show installation recommendation for mobile users
@@ -961,6 +962,8 @@ function showInstallPrompt() {
   // Add event listener to close the modal
   document.getElementById('close-install-modal').addEventListener('click', () => {
     modal.remove();
+    // Store a flag in localStorage to prevent the modal from showing again
+    localStorage.setItem('installPromptDismissed', 'true');
   });
 }
 
@@ -969,7 +972,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Always show welcome section on load
   showSection(welcomeSection);
 
-  if (isMobileDevice() && !isRunningStandalone()) {
+  // Check if the modal was previously dismissed
+  const isModalDismissed = localStorage.getItem('installPromptDismissed') === 'true';
+
+  if (isMobileDevice() && !isRunningStandalone() && !isModalDismissed) {
     showInstallPrompt();
   } else {
     // Ensure navigation is visible for standalone or desktop
