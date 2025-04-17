@@ -964,9 +964,7 @@ function showInstallPrompt() {
   // Add event listener to close the modal
   document.getElementById('close-install-modal').addEventListener('click', () => {
     modal.remove();
-    // Store a flag in localStorage to prevent the modal from showing again
-    localStorage.setItem('installPromptDismissed', 'true');
-    console.log("Install prompt dismissed, flag set in localStorage");
+    console.log("Install prompt closed");
   });
 }
 
@@ -976,15 +974,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Always show welcome section on load
   showSection(welcomeSection);
 
-  // Check if the modal was previously dismissed
-  const isModalDismissed = localStorage.getItem('installPromptDismissed') === 'true';
-  console.log("Is modal dismissed (from localStorage):", isModalDismissed);
-
   // Log device and standalone status
   console.log("Is mobile device:", isMobileDevice());
   console.log("Is running standalone:", isRunningStandalone());
 
-  if (isMobileDevice() && !isRunningStandalone() && !isModalDismissed) {
+  if (isMobileDevice() && !isRunningStandalone()) {
     showInstallPrompt();
   } else {
     // Ensure navigation is visible for standalone or desktop
@@ -992,8 +986,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'auto';
     console.log("Modal not shown due to: ", {
       isMobile: isMobileDevice(),
-      isStandalone: isRunningStandalone(),
-      isModalDismissed: isModalDismissed
+      isStandalone: isRunningStandalone()
     });
   }
 });
