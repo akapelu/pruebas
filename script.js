@@ -2095,12 +2095,30 @@ document.getElementById('delete-account-btn').addEventListener('click', async ()
 // Registrar el Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
+    console.log("Attempting to register Service Worker...");
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
       .then(registration => {
-        console.log('Service Worker registrado:', registration);
+        console.log('Service Worker registered successfully:', registration);
+        console.log('Service Worker scope:', registration.scope);
+        // Check if the Service Worker is active
+        if (registration.active) {
+          console.log('Service Worker is active');
+        } else {
+          console.log('Service Worker is not active yet, waiting for activation...');
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'activated') {
+                console.log('Service Worker activated');
+              }
+            });
+          });
+        }
       })
       .catch(error => {
-        console.error('Error al registrar el Service Worker:', error);
+        console.error('Error registering Service Worker:', error);
       });
   });
+} else {
+  console.log('Service Workers are not supported in this browser');
 }
