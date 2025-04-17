@@ -1,7 +1,7 @@
 {
   "name": "Wonder Decks",
   "short_name": "Wonder Decks",
-  "start_url": "/index.html",
+  "start_url": "https://raw.githubusercontent.com/akapelu/WonderDecks/main/index.html",
   "display": "standalone",
   "background_color": "#0a1c3d",
   "theme_color": "#1a2a6c",
