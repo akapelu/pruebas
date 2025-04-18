@@ -5,15 +5,19 @@
     font-family: 'Orbitron', sans-serif;
 }
 
+html {
+    height: 100%;
+    background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%);
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  background: url('/background.png') no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'Orbitron', sans-serif;
-  color: #e6e6e6;
-  min-height: 100vh;
-  overflow-x: hidden;
+    background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%);
+    background-attachment: fixed;
+    color: #e6e6e6;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
 }
 
 /* Background with sparkling particles */
@@ -1024,123 +1028,4 @@ h2 {
     .troop-info-modal-content .ability {
         font-size: 12px;
     }
-}
-/* Ajustar contenido para modo standalone en iOS */
-body {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
-/* Styles for the installation modal */
-#install-modal .modal-content {
-  background: linear-gradient(145deg, #0a1c3d, #1a2a6c);
-  padding: 25px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  border: 2px solid #ffffff;
-  color: #e6e6e6;
-  max-height: 80vh;
-  overflow-y: auto;
-  font-family: 'Orbitron', sans-serif;
-}
-
-#install-modal h2 {
-  font-size: 28px;
-  color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-  margin-bottom: 20px;
-}
-
-#install-modal p {
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-
-#install-modal .install-instructions {
-  margin: 20px 0;
-}
-
-#install-modal .instruction {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-#install-modal .instruction i {
-  font-size: 24px;
-  color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-#install-modal .instruction p {
-  font-size: 14px;
-  margin: 0;
-}
-
-#install-modal .instruction strong {
-  color: #ffffff;
-}
-
-#install-modal .note {
-  font-size: 14px;
-  font-style: italic;
-  color: #d1d1d1;
-}
-
-/* Style for the modal close button */
-#install-modal .modal-button {
-  background: linear-gradient(145deg, #1a2a6c, #0a1c3d);
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 15px;
-}
-
-#install-modal .modal-button:hover {
-  background: linear-gradient(145deg, #2a3a7c, #1a2a6c);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-/* Adjustments for small mobiles */
-@media (max-width: 480px) {
-  #install-modal .modal-content {
-    padding: 20px;
-    max-width: 95%;
-  }
-
-  #install-modal h2 {
-    font-size: 24px;
-  }
-
-  #install-modal p {
-    font-size: 14px;
-  }
-
-  #install-modal .instruction i {
-    font-size: 20px;
-  }
-
-  #install-modal .instruction p {
-    font-size: 12px;
-  }
-
-  #install-modal .note {
-    font-size: 12px;
-  }
-
-  #install-modal .modal-button {
-    font-size: 12px;
-    padding: 8px 15px;
-  }
 }
