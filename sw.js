@@ -1,13 +1,12 @@
-// Service Worker for Wonder Decks
 const CACHE_NAME = 'wonder-decks-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/manifest.json',
-  '/images/icono-192x192.png',
-  '/images/icono-512x512.png'
+  '/pruebas/', // Ajustar al subdirectorio
+  '/pruebas/index.html',
+  '/pruebas/styles.css',
+  '/pruebas/script.js',
+  '/pruebas/manifest.json',
+  '/pruebas/images/icono-192x192.png',
+  '/pruebas/images/icono-512x512.png'
 ];
 
 // Install event: cache the essential files
