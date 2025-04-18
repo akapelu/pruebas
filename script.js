@@ -2096,7 +2096,7 @@ document.getElementById('delete-account-btn').addEventListener('click', async ()
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     console.log("Attempting to register Service Worker...");
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+    navigator.serviceWorker.register('main/sw.js', { scope: '/' })
       .then(registration => {
         console.log('Service Worker registered successfully:', registration);
         console.log('Service Worker scope:', registration.scope);
