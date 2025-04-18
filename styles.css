@@ -5,11 +5,6 @@
     font-family: 'Orbitron', sans-serif;
 }
 
-html {
-    height: 100%;
-    background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%);
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -21,25 +16,24 @@ body {
   overflow-x: hidden;
 }
 
-/* Background with sparkling particles */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-    background-attachment: fixed;
-    opacity: 0.1;
-    z-index: -1;
-    animation: sparkle 10s infinite;
+/* body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-attachment: fixed;
+  opacity: 0.1;
+  z-index: -1;
+  animation: sparkle 10s infinite;
 }
 
 @keyframes sparkle {
-    0%, 100% { opacity: 0.1; }
-    50% { opacity: 0.2; }
-}
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.2; }
+} */
 
 nav {
     background: linear-gradient(145deg, #3A0062, #2A0042);
@@ -703,10 +697,12 @@ h2 {
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
-    body {
-        background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%);
-        background-attachment: fixed;
-    }
+  body {
+    /* background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%); */
+    /* background-attachment: fixed; */
+  }
+  /* Resto del código */
+}
 
     nav {
         padding: 5px 15px;
@@ -894,10 +890,12 @@ h2 {
 }
 
 @media (max-width: 480px) {
-    body {
-        background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%);
-        background-attachment: fixed;
-    }
+  body {
+    /* background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%); */
+    /* background-attachment: fixed; */
+  }
+  /* Resto del código */
+}
 
     nav {
         padding: 5px 10px;
