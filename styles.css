@@ -13,7 +13,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: url('/background.png') no-repeat center center fixed;
+  background: url('pruebas/background.png') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Orbitron', sans-serif;
   color: #e6e6e6;
