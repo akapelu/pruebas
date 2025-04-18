@@ -16,6 +16,8 @@ try {
     console.log("Firebase initialized successfully");
     db = firebase.firestore();
     auth = firebase.auth();
+    // Eliminar o comentar este bloque
+    /*
     auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .catch(error => {
             console.warn("Error setting auth persistence to LOCAL:", error);
@@ -26,6 +28,7 @@ try {
                     return Promise.resolve();
                 });
         });
+    */
 } catch (error) {
     console.error("Error initializing Firebase:", error);
     alert("Error initializing Firebase. Please check your Firebase configuration and try again.");
@@ -2096,11 +2099,10 @@ document.getElementById('delete-account-btn').addEventListener('click', async ()
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     console.log("Attempting to register Service Worker...");
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+    navigator.serviceWorker.register('/pruebas/sw.js', { scope: '/pruebas/' }) // Ajustar la ruta y el ámbito
       .then(registration => {
         console.log('Service Worker registered successfully:', registration);
         console.log('Service Worker scope:', registration.scope);
-        // Check if the Service Worker is active
         if (registration.active) {
           console.log('Service Worker is active');
         } else {
