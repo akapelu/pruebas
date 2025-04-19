@@ -692,10 +692,14 @@ h2 {
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
-    body {
-        background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%);
-        background-attachment: fixed;
+    html {
+        background: url('https://raw.githubusercontent.com/akapelu/pruebas/main/background.png') no-repeat center center fixed;
+        background-size: cover;
     }
+    body {
+        background: transparent;
+    }
+}
 
     nav {
         padding: 5px 15px;
@@ -883,10 +887,14 @@ h2 {
 }
 
 @media (max-width: 480px) {
-    body {
-        background: linear-gradient(135deg, #0a1c3d 0%, #1a2a6c 100%);
-        background-attachment: fixed;
+    html {
+        background: url('https://raw.githubusercontent.com/akapelu/pruebas/main/background.png') no-repeat center center fixed;
+        background-size: cover;
     }
+    body {
+        background: transparent;
+    }
+}
 
     nav {
         padding: 5px 10px;
