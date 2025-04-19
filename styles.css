@@ -31,10 +31,10 @@ body::before {
 }
 
 nav {
-    background: linear-gradient(90deg, rgba(26, 13, 58, 0.9) 0%, rgba(36, 19, 77, 0.9) 100%); /* Nuevo gradiente púrpura más oscuro */
+    background: linear-gradient(90deg, rgba(26, 13, 58, 0.9) 0%, rgba(36, 19, 77, 0.9) 100%);
     padding: 5px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Aseguramos que el logo esté a la izquierda y los botones a la derecha */
     align-items: center;
     flex-wrap: wrap;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -76,16 +76,12 @@ nav {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.lang-flag:hover {
-    transform: scale(1.1);
-}
-
 .nav-right {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Aseguramos que los botones estén alineados a la derecha */
 }
 
 .nav-right button, .nav-right span {
@@ -689,8 +685,51 @@ h2 {
         margin: 10px auto;
     }
 }
+/* Reforzar el diseño para pantallas grandes */
+@media (min-width: 769px) {
+    nav {
+        padding: 5px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 150px;
+        flex-direction: row; /* Aseguramos que el menú no se apile */
+    }
 
+    .nav-left {
+        display: flex;
+        justify-content: flex-start;
+        width: auto;
+    }
+
+    .logo-image {
+        height: 200px;
+        width: auto;
+        max-height: 80px;
+        object-fit: contain;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+        width: auto;
+        margin-top: 0;
+    }
+
+    .nav-right button, .nav-right span {
+        margin-left: 5px;
+        padding: 6px 10px;
+        font-size: 13px;
+        min-width: 90px;
+        max-width: 120px;
+    }
+}
 /* Responsive adjustments for mobile */
+/* Ajustes para pantallas medianas */
 @media (max-width: 768px) {
     html {
         background: url('https://raw.githubusercontent.com/akapelu/pruebas/main/background.png') no-repeat center center fixed;
@@ -699,7 +738,6 @@ h2 {
     body {
         background: transparent;
     }
-}
 
     nav {
         padding: 5px 15px;
@@ -894,7 +932,6 @@ h2 {
     body {
         background: transparent;
     }
-}
 
     nav {
         padding: 5px 10px;
